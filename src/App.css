@@ -242,10 +242,13 @@ p {
   align-items: center;
   align-self: flex-start;
   flex: 0 0 auto;
+}
+
+.item-details-block .container-flex-row .item-square {
   background: #313464;
 }
 
-.item-square.pinked {
+.item-details-block:nth-child(odd) .container-flex-row .item-square {
   background: #af7d93;
 }
 
