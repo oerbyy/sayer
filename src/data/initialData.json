@@ -1,0 +1,61 @@
+{
+  "whispers": [
+    {
+      "id": 1,
+      "title": "State of React State Management for 2019",
+      "commentsCount": 3,
+      "comments": [
+        {
+          "id": 1,
+          "commentText": "React Component State: back to basics. React itself provides some useful methods for setting component states using setState() and adding a “local state” to a class."
+        },
+        {
+          "id": 2,
+          "commentText": "React Context API (v16.3.0+): promise of a better future. The new React Context API, officially recommended from version React’s version 16.3.0, solves a major problem when setting component states: it lets you pass data through the component tree without having to manually pass props at every level of the tree even when not needed (prop drilling)."
+        },
+        {
+          "id": 3,
+          "commentText": "Redux: It just works. And there’s middleware! “Redux is only a set of helpers to “mount” reducers to a single global store object. You can use as little, or as much of Redux, as you like.” — Dan Abramov. The Redux store, which is basically an object with some methods, works as a unified place to hold your application’s entire state tree. react-redux makes it simple to map your redux state onto React components (via connector functions, which are higher-order components on their own)."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Empeek",
+      "commentsCount": 2,
+      "comments": [
+        {
+          "id": 1,
+          "commentText": "Ми сучасна молода компанія, тому для нас немає принципової різниці чи людина працює з дому чи в офісі. Більшість співробітників працює у командах за принципом Dedicated Team (кожен учасник команди контактує із іноземним замовником) — тому хороше знання англійської мови в такому випадку є обов’язковим."
+        },
+        {
+          "id": 2,
+          "commentText": "Scrum, Continuous Integration, Code Reviews, Unit testing — це ті речі, які ми використовуємо щодня. Перш за все нам потрібна людина в компанію, а не конкретно під цей проект. Із своєї сторони, орієнтуємось на тривалу співпрацю та підтримку у кар’єрному рості."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Little known features of JavaScript",
+      "commentsCount": 4,
+      "comments": [
+        {
+          "id": 1,
+          "commentText": "JavaScript is often said to be the easiest language to start with and the hardest to master. I couldn’t agree more. This is because JavaScript is a really old & a really flexible language. It is full of mysterious syntaxes and obsolete features"
+        },
+        {
+          "id": 2,
+          "commentText": "!! Bang Bang Operator. It’s just the JavaScript negation operator used twice. But Bang Bang sounds so cool! Bang Bang or Double Bang is a neat trick to convert any expression to a Boolean value. If the expression is a truthy value, it return true; otherwise it returns false."
+        },
+        {
+          "id": 3,
+          "commentText": "~ Tilde Operator. Let’s face it — Nobody cares about the Bitwise operators. Well, there is an everyday use case for the Tilde or Bitwise NOT operator. Turns out when used with a number, the Tilde operator effective does ~N => -(N+1) . This expression evaluates to “0” only when N == -1"
+        },
+        {
+          "id": 4,
+          "commentText": "+ Plus Operator. Ever wanted to quickly convert a string to a number? Just prefix the string with + operator. Plus operator also works for negative, octal, hexadecimal, exponential values. What’s more, it even converts a Date or Moment.js object to the timestamp!"
+        }
+      ]
+    }
+  ]
+}

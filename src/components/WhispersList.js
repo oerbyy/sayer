@@ -1,8 +1,31 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
+import dataService from '../services/dataService';
+
 export class WhispersList extends Component {
   static propTypes = {};
+
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+  }
+
+  componentDidMount() {
+    let persistedData = localStorage.getItem('Sayer');
+
+    if (persistedData) {
+      let parsedData = JSON.parse(persistedData);
+
+      this.setState({whispers: parsedData});
+    } else {
+      let stubData = dataService.getStubsData();
+
+      localStorage.setItem('Sayer', JSON.stringify(stubData));
+      this.setState({whispers: stubData.whispers});
+    }
+  }
 
   render() {
     return (
