@@ -99,10 +99,10 @@ export class WhisperDetails extends Component {
                 value={this.state.commentText}
                 onChange={this.handleInputChange}
                 onKeyUp={e => this.handleEnterPress(whisper.id, e)}
-                maxLength="150"
+                maxLength="500"
               />
               <div className="item-circle link" onClick={_ => this.addComment(whisper.id)}>
-                <div className="item-text white"> > </div>
+                <div className="item-text white">&gt;</div>
               </div>
             </div>
           </div>

@@ -123,6 +123,13 @@ p {
   font-weight: 600;
 }
 
+.caption-with-ellipsis {
+  white-space: nowrap;
+  width: 100%; /* IE6 needs any width */
+  overflow: hidden; /* "overflow" value must be different from  visible"*/
+  text-overflow: ellipsis; /* IE, Safari (WebKit), Opera >= 11, FF > 6 */
+}
+
 .item-text.white {
   margin-bottom: 3px;
   color: #fcf5f7;

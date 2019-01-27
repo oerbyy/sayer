@@ -24,7 +24,7 @@ export class WhispersList extends Component {
         .filter(whisper => !whisper.isDeleted)
         .map(whisper => (
           <div className="item-block" key={whisper.id}>
-            <Link to={`/whispers/${whisper.id}`} className="item-text" title="View comments">
+            <Link to={`/whispers/${whisper.id}`} className="item-text caption-with-ellipsis" title="View comments">
               {whisper.title}
             </Link>
 
