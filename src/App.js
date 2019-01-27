@@ -9,6 +9,8 @@ import WhispersList from './components/WhispersList';
 import WhisperDetails from './components/WhisperDetails';
 import NewWhisper from './components/NewWhisper';
 
+const APPNAME = 'Sayer';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -21,7 +23,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    let persistedData = localStorage.getItem('Sayer');
+    let persistedData = localStorage.getItem(APPNAME);
 
     if (persistedData) {
       let parsedData = JSON.parse(persistedData);
@@ -30,7 +32,7 @@ class App extends Component {
     } else {
       let stubData = dataService.getStubsData();
 
-      localStorage.setItem('Sayer', JSON.stringify(stubData));
+      localStorage.setItem(APPNAME, JSON.stringify(stubData));
       this.setState({whispers: stubData.whispers});
     }
   }
@@ -50,7 +52,7 @@ class App extends Component {
       return newItem;
     });
 
-    localStorage.setItem('Sayer', JSON.stringify({whispers: newState}));
+    localStorage.setItem(APPNAME, JSON.stringify({whispers: newState}));
     this.setState({whispers: newState});
   }
 
@@ -67,14 +69,14 @@ class App extends Component {
       return newItem;
     });
 
-    localStorage.setItem('Sayer', JSON.stringify({whispers: newState}));
+    localStorage.setItem(APPNAME, JSON.stringify({whispers: newState}));
     this.setState({whispers: newState});
   }
 
   addWhisper(newWhisper) {
     const newState = [...this.state.whispers, newWhisper];
 
-    localStorage.setItem('Sayer', JSON.stringify({whispers: newState}));
+    localStorage.setItem(APPNAME, JSON.stringify({whispers: newState}));
     this.setState({whispers: newState});
   }
 
