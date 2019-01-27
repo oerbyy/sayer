@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import autoBind from 'react-autobind';
 
-import dataService from '../services/dataService';
-
 export class WhispersList extends Component {
-  static propTypes = {};
+  static propTypes = {
+    whispers: PropTypes.array
+  };
 
   constructor(props) {
     super(props);
@@ -14,25 +15,10 @@ export class WhispersList extends Component {
     autoBind(this);
   }
 
-  componentDidMount() {
-    let persistedData = localStorage.getItem('Sayer');
-
-    if (persistedData) {
-      let parsedData = JSON.parse(persistedData);
-
-      this.setState({whispers: parsedData.whispers});
-    } else {
-      let stubData = dataService.getStubsData();
-
-      localStorage.setItem('Sayer', JSON.stringify(stubData));
-      this.setState({whispers: stubData.whispers});
-    }
-  }
-
   renderWhispersList() {
     return (
-      this.state.whispers &&
-      this.state.whispers.map(whisper => (
+      this.props.whispers &&
+      this.props.whispers.map(whisper => (
         <div className="item-block" key={whisper.id}>
           <div className="item-text">{whisper.title}</div>
           <div className="container-item-controls">
@@ -49,9 +35,7 @@ export class WhispersList extends Component {
   }
 
   render() {
-    console.log('localStorage', localStorage);
-    console.log('STATE', this.state);
-    console.log('PROPS', this.props);
+    console.log('WhispersList PROPS', this.props);
 
     return (
       <React.Fragment>
