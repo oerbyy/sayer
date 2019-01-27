@@ -79,7 +79,7 @@ export class WhisperDetails extends Component {
       <React.Fragment>
         <div className="header-block">
           <div className="container-flex-row">
-            <Link to={`/whispers`} className="item-circle link">
+            <Link to={`/whispers`} className="item-circle link" title="Back to whispers">
               <div className="item-text white">⟵</div>
             </Link>
             <h2 className="heading-item">{whisper.title}</h2>
