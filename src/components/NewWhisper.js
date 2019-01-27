@@ -5,6 +5,8 @@ export class NewWhisper extends Component {
   static propTypes = {};
 
   render() {
+    console.log('NewWhisper PROPS', this.props);
+
     return (
       <React.Fragment>
         <div className="header-block">

@@ -23,6 +23,15 @@ a:active {
   text-decoration: none;
 }
 
+.link {
+  cursor: pointer;
+}
+
+input,
+input:focus {
+  border: 0px solid;
+}
+
 h1 {
   margin-top: 20px;
   margin-bottom: 10px;

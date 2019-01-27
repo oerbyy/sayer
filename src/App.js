@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Switch, Route, Redirect} from 'react-router-dom';
+import autoBind from 'react-autobind';
 
 import dataService from './services/dataService';
 import './App.css';
@@ -12,7 +13,11 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      whispers: []
+    };
+
+    autoBind(this);
   }
 
   componentDidMount() {
@@ -30,10 +35,22 @@ class App extends Component {
     }
   }
 
+  addComment(whisperId, commentText) {
+    const newState = this.state.whispers.map(item => {
+      if (item.id === Number(whisperId)) {
+        item.comments.push(commentText);
+        item.commentsCount++;
+      }
+
+      return item;
+    });
+
+    localStorage.setItem('Sayer', JSON.stringify({whispers: newState}));
+    this.setState({whispers: newState});
+  }
+
   render() {
-    console.log('APP localStorage', localStorage);
     console.log('APP STATE', this.state);
-    console.log('APP PROPS', this.props);
 
     return (
       <div className="section-main container-main">
@@ -41,7 +58,13 @@ class App extends Component {
           <Route
             path="/whispers/:id"
             exact={true}
-            render={props => <WhisperDetails {...props} whispers={this.state.whispers} />}
+            render={props => (
+              <WhisperDetails
+                {...props}
+                whispers={this.state.whispers}
+                addComment={this.addComment}
+              />
+            )}
           />
           <Route
             path="/whispers"

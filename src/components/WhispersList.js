@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 
 export class WhispersList extends Component {
   static propTypes = {
-    whispers: PropTypes.array
+    whispers: PropTypes.array.isRequired
   };
 
   constructor(props) {
