@@ -49,6 +49,19 @@ class App extends Component {
     this.setState({whispers: newState});
   }
 
+  deleteWhisper(whisperId) {
+    const newState = this.state.whispers.map(item => {
+      if (item.id === Number(whisperId)) {
+        item.isDeleted = true;
+      }
+
+      return item;
+    });
+
+    localStorage.setItem('Sayer', JSON.stringify({whispers: newState}));
+    this.setState({whispers: newState});
+  }
+
   render() {
     console.log('APP STATE', this.state);
 
@@ -69,7 +82,13 @@ class App extends Component {
           <Route
             path="/whispers"
             exact={true}
-            render={props => <WhispersList {...props} whispers={this.state.whispers} />}
+            render={props => (
+              <WhispersList
+                {...props}
+                whispers={this.state.whispers}
+                deleteWhisper={this.deleteWhisper}
+              />
+            )}
           />
           <Route path="/whisper-new" exact={true} render={props => <NewWhisper {...props} />} />
           } />

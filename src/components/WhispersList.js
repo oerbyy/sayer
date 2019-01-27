@@ -5,7 +5,8 @@ import {Link} from 'react-router-dom';
 
 export class WhispersList extends Component {
   static propTypes = {
-    whispers: PropTypes.array.isRequired
+    whispers: PropTypes.array.isRequired,
+    deleteWhisper: PropTypes.func.isRequired
   };
 
   constructor(props) {
@@ -19,22 +20,27 @@ export class WhispersList extends Component {
   renderWhispersList() {
     return (
       this.props.whispers &&
-      this.props.whispers.map(whisper => (
-        <div className="item-block" key={whisper.id}>
-          <Link to={`/whispers/${whisper.id}`} className="item-text">
-            {whisper.title}
-          </Link>
+      this.props.whispers
+        .filter(whisper => !whisper.isDeleted)
+        .map(whisper => (
+          <div className="item-block" key={whisper.id}>
+            <Link to={`/whispers/${whisper.id}`} className="item-text">
+              {whisper.title}
+            </Link>
 
-          <div className="container-item-controls">
-            <div className="item-circle">
-              <div className="item-text white">{whisper.commentsCount}</div>
-            </div>
-            <div className="item-delete-pink">
-              <div className="item-text white">Delete</div>
+            <div className="container-item-controls">
+              <div className="item-circle">
+                <div className="item-text white">{whisper.commentsCount}</div>
+              </div>
+              <div
+                className="item-delete-pink link"
+                onClick={_ => this.props.deleteWhisper(whisper.id)}
+              >
+                <div className="item-text white">Delete</div>
+              </div>
             </div>
           </div>
-        </div>
-      ))
+        ))
     );
   }
 
