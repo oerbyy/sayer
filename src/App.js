@@ -22,6 +22,7 @@ class App extends Component {
 
   componentDidMount() {
     let persistedData = localStorage.getItem('Sayer');
+    console.log('DATA LOADED! ....................................');
 
     if (persistedData) {
       let parsedData = JSON.parse(persistedData);
@@ -37,12 +38,17 @@ class App extends Component {
 
   addComment(whisperId, commentText) {
     const newState = this.state.whispers.map(item => {
+      let newItem = {
+        ...item,
+        comments: [...item.comments]
+      };
+
       if (item.id === Number(whisperId)) {
-        item.comments.push(commentText);
-        item.commentsCount++;
+        newItem.comments = [...newItem.comments, commentText];
+        newItem.commentsCount++;
       }
 
-      return item;
+      return newItem;
     });
 
     localStorage.setItem('Sayer', JSON.stringify({whispers: newState}));
@@ -51,19 +57,31 @@ class App extends Component {
 
   deleteWhisper(whisperId) {
     const newState = this.state.whispers.map(item => {
+      let newItem = {
+        ...item
+      };
+
       if (item.id === Number(whisperId)) {
-        item.isDeleted = true;
+        newItem.isDeleted = true;
       }
 
-      return item;
+      return newItem;
     });
 
     localStorage.setItem('Sayer', JSON.stringify({whispers: newState}));
     this.setState({whispers: newState});
   }
 
+  addWhisper(newWhisper) {
+    const newState = [...this.state.whispers, newWhisper];
+
+    localStorage.setItem('Sayer', JSON.stringify({whispers: newState}));
+    this.setState({whispers: newState});
+  }
+
   render() {
-    console.log('APP STATE', this.state);
+    console.log('APP STATE', this.state.whispers);
+    let nextWhisperId = this.state.whispers.length + 1;
 
     return (
       <div className="section-main container-main">
@@ -90,7 +108,13 @@ class App extends Component {
               />
             )}
           />
-          <Route path="/whisper-new" exact={true} render={props => <NewWhisper {...props} />} />
+          <Route
+            path="/whisper-new"
+            exact={true}
+            render={props => (
+              <NewWhisper {...props} nextWhisperId={nextWhisperId} addWhisper={this.addWhisper} />
+            )}
+          />
           } />
           <Redirect to="/whispers" />
         </Switch>
