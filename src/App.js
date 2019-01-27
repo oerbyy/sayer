@@ -10,7 +10,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="section-main container-main">
         <Switch>
           {this.props.routes.map((route, index) => (
             <Route key={index} exact={route.exact} path={route.path} render={route.main} />

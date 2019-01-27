@@ -1,18 +1,33 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 export class NewWhisper extends Component {
-  static propTypes = {
-
-  }
+  static propTypes = {};
 
   render() {
     return (
-      <div>
-        NewWhisper
-      </div>
-    )
+      <React.Fragment>
+        <div className="header-block">
+          <div className="container-flex-row">
+            <div className="item-circle">
+              <div className="button-text white">⟵</div>
+            </div>
+            <h2 className="heading-item">Create new item</h2>
+          </div>
+        </div>
+        <div className="item-new-block">
+          <div className="container-flex-row">
+            <div className="input-item">
+              <div className="input-text">New item title...</div>
+            </div>
+            <div className="item-circle">
+              <div className="button-text white">&gt;</div>
+            </div>
+          </div>
+        </div>
+      </React.Fragment>
+    );
   }
 }
 
-export default NewWhisper
+export default NewWhisper;
