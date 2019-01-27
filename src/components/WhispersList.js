@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import autoBind from 'react-autobind';
+import {Link} from 'react-router-dom';
 
 export class WhispersList extends Component {
   static propTypes = {
@@ -20,7 +21,10 @@ export class WhispersList extends Component {
       this.props.whispers &&
       this.props.whispers.map(whisper => (
         <div className="item-block" key={whisper.id}>
-          <div className="item-text">{whisper.title}</div>
+          <Link to={`/whispers/${whisper.id}`} className="item-text">
+            {whisper.title}
+          </Link>
+
           <div className="container-item-controls">
             <div className="item-circle">
               <div className="item-text white">{whisper.commentsCount}</div>

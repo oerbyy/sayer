@@ -9,7 +9,6 @@ import WhisperDetails from './components/WhisperDetails';
 import NewWhisper from './components/NewWhisper';
 
 class App extends Component {
-
   constructor(props) {
     super(props);
 
@@ -42,10 +41,15 @@ class App extends Component {
           <Route
             path="/whispers/:id"
             exact={true}
-            render={props => <WhisperDetails {...props} />}
+            render={props => <WhisperDetails {...props} whispers={this.state.whispers} />}
           />
-          <Route path="/whispers" exact={true} render={props => <WhispersList {...props} whispers={this.state.whispers} />} />
+          <Route
+            path="/whispers"
+            exact={true}
+            render={props => <WhispersList {...props} whispers={this.state.whispers} />}
+          />
           <Route path="/whisper-new" exact={true} render={props => <NewWhisper {...props} />} />
+          } />
           <Redirect to="/whispers" />
         </Switch>
       </div>
