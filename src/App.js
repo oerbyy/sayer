@@ -22,7 +22,6 @@ class App extends Component {
 
   componentDidMount() {
     let persistedData = localStorage.getItem('Sayer');
-    console.log('DATA LOADED! ....................................');
 
     if (persistedData) {
       let parsedData = JSON.parse(persistedData);
@@ -80,7 +79,6 @@ class App extends Component {
   }
 
   render() {
-    console.log('APP STATE', this.state.whispers);
     let nextWhisperId = this.state.whispers.length + 1;
 
     return (

@@ -45,8 +45,6 @@ export class WhispersList extends Component {
   }
 
   render() {
-    console.log('WhispersList PROPS', this.props);
-
     return (
       <React.Fragment>
         <div className="header-block">
@@ -59,9 +57,9 @@ export class WhispersList extends Component {
         {this.renderWhispersList()}
 
         <div className="add-item-block">
-          <div className="item-circle-add">
+          <Link to={`/whisper-new`} className="item-circle-add">
             <div className="item-text-plus white">+</div>
-          </div>
+          </Link>
         </div>
       </React.Fragment>
     );

@@ -42,7 +42,7 @@ export class WhisperDetails extends Component {
     if (!this.state.commentText) return;
 
     this.props.addComment(whisperId, this.state.commentText);
-    
+
     this.setState({commentText: ''});
   }
 
