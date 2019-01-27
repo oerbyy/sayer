@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import autoBind from 'react-autobind';
 
 import dataService from '../services/dataService';
 
@@ -10,6 +10,8 @@ export class WhispersList extends Component {
     super(props);
 
     this.state = {};
+
+    autoBind(this);
   }
 
   componentDidMount() {
@@ -18,7 +20,7 @@ export class WhispersList extends Component {
     if (persistedData) {
       let parsedData = JSON.parse(persistedData);
 
-      this.setState({whispers: parsedData});
+      this.setState({whispers: parsedData.whispers});
     } else {
       let stubData = dataService.getStubsData();
 
@@ -27,7 +29,30 @@ export class WhispersList extends Component {
     }
   }
 
+  renderWhispersList() {
+    return (
+      this.state.whispers &&
+      this.state.whispers.map(whisper => (
+        <div className="item-block" key={whisper.id}>
+          <div className="item-text">{whisper.title}</div>
+          <div className="container-item-controls">
+            <div className="item-circle">
+              <div className="item-text white">{whisper.commentsCount}</div>
+            </div>
+            <div className="item-delete-pink">
+              <div className="item-text white">Delete</div>
+            </div>
+          </div>
+        </div>
+      ))
+    );
+  }
+
   render() {
+    console.log('localStorage', localStorage);
+    console.log('STATE', this.state);
+    console.log('PROPS', this.props);
+
     return (
       <React.Fragment>
         <div className="header-block">
@@ -36,24 +61,9 @@ export class WhispersList extends Component {
             <h5 className="heading-brand-small">World's most user time waster</h5>
           </div>
         </div>
-        <div className="item-block">
-          <div className="button-text">First item with customize...</div>
-          <div className="item-circle">
-            <div className="button-text white">42</div>
-          </div>
-        </div>
-        <div className="item-block">
-          <div className="button-text">Second Item</div>
-          <div className="item-delete-pink">
-            <div className="button-text white">Delete</div>
-          </div>
-        </div>
-        <div className="item-block">
-          <div className="button-text">Third item (short one)</div>
-          <div className="item-circle">
-            <div className="button-text white">19</div>
-          </div>
-        </div>
+
+        {this.renderWhispersList()}
+
         <div className="add-item-block">
           <div className="item-circle-add">
             <div className="item-text-plus white">+</div>

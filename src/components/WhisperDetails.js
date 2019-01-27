@@ -10,7 +10,7 @@ export class WhisperDetails extends Component {
         <div className="header-block">
           <div className="container-flex-row">
             <div className="item-circle">
-              <div className="button-text white">⟵</div>
+              <div className="item-text white">⟵</div>
             </div>
             <h2 className="heading-item">First item with customized long title</h2>
           </div>
@@ -43,7 +43,7 @@ export class WhisperDetails extends Component {
               <div className="input-text">New comment goes here...</div>
             </div>
             <div className="item-circle">
-              <div className="button-text white">⟵</div>
+              <div className="item-text white">⟵</div>
             </div>
           </div>
         </div>
