@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import autoBind from 'react-autobind';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 
 export class NewWhisper extends Component {
   static propTypes = {
@@ -13,7 +13,8 @@ export class NewWhisper extends Component {
     super(props);
 
     this.state = {
-      whisperTitle: ''
+      whisperTitle: '',
+      isRedirectNeeded: false
     };
 
     autoBind(this);
@@ -32,7 +33,10 @@ export class NewWhisper extends Component {
 
     this.props.addWhisper(newWisper);
 
-    this.setState({whisperTitle: ''});
+    this.setState({
+      whisperTitle: '',
+      isRedirectNeeded: true
+    });
   }
 
   handleInputChange(e) {
@@ -50,6 +54,8 @@ export class NewWhisper extends Component {
   render() {
     return (
       <React.Fragment>
+        {this.state.isRedirectNeeded && <Redirect to="/whispers" />}
+
         <div className="header-block">
           <div className="container-flex-row">
             <Link to={`/whispers`} className="item-circle link" title="Back to whispers">
