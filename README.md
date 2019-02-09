@@ -21,7 +21,7 @@
 1. https://youtu.be/1Y-PqBH-htk
 
 2. set git remote URL in the format:
-https://<username>:<password>@github.com/oerbyy/sayer.git
+https://[username]:[password]@github.com/oerbyy/sayer.git
 
 3. execute in Terminal:
 npm run deploy
